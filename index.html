@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Workshop on Continual Improvement of Robot Policies — CoRL 2025</title>
+  <title>Workshop on Towards Continually Improving Robot Systems — CoRL 2025</title>
   <style>
     /* ── Reset & tokens ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -376,16 +376,71 @@
     .dates-table tr:last-child td { border-bottom: none; }
     .dates-table .tbd { color: #94a3b8; font-style: italic; }
 
-    /* ── Program coming soon ── */
-    .coming-soon {
-      border: 2px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 4rem 2rem;
-      text-align: center;
+    /* ── Schedule ── */
+    .schedule-block { margin-bottom: 2.5rem; }
+    .schedule-block:last-child { margin-bottom: 0; }
+
+    .schedule-block-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.25rem;
     }
-    .coming-soon .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
-    .coming-soon h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text-muted); }
-    .coming-soon p { color: #94a3b8; }
+
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 0 1.5rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+
+    .schedule-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      padding-top: 0.15rem;
+    }
+
+    .schedule-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 0.3rem;
+    }
+    .tag-talk    { background: #dbeafe; color: #1d4ed8; }
+    .tag-break   { background: #f1f5f9; color: #64748b; }
+    .tag-special { background: #ede9fe; color: #6d28d9; }
+    .tag-panel   { background: #d1fae5; color: #065f46; }
+    .tag-welcome { background: #fef3c7; color: #92400e; }
+    .tag-closing { background: #ffe4e6; color: #be123c; }
+
+    .schedule-event-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .schedule-event-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0.1rem 0 0;
+    }
+
+    @media (max-width: 500px) {
+      .schedule-row { grid-template-columns: 1fr; gap: 0.2rem; }
+      .schedule-time { color: #94a3b8; font-size: 0.75rem; }
+    }
 
     /* ── Organizer cards ── */
     .organizer-grid {
@@ -407,8 +462,8 @@
     }
 
     .organizer-avatar {
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 7.5rem;
+      height: 7.5rem;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -420,7 +475,10 @@
     }
 
     .organizer-info .name { font-size: 0.9rem; font-weight: 700; color: #1e293b; }
+    .organizer-info .name a { color: inherit; text-decoration: none; }
+    .organizer-info .name a:hover { color: var(--primary); text-decoration: underline; }
     .organizer-info .affil { font-size: 0.76rem; color: #64748b; margin-top: 0.1rem; }
+    .organizer-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
 
     /* ── Footer ── */
     footer {
@@ -476,7 +534,7 @@
   <div class="hero" role="region" aria-label="Workshop header">
     <div class="hero-inner">
       <div class="hero-pill" aria-hidden="true">CoRL 2025 Workshop</div>
-      <h1>Workshop on Continual Improvement<br>of Robot Policies</h1>
+      <h1>Towards Continually Improving<br>Robot Systems</h1>
       <p class="hero-quote">
         "A robot policy at deployment is not the finish line;<br>it is a new starting point."
       </p>
@@ -523,11 +581,9 @@
             <div class="topic-icon" style="background:#dbeafe; color:#1d4ed8;" role="img" aria-label="Database icon">🗄️</div>
             <h3 id="topic-data">Data for Continual Improvement</h3>
             <ul>
-              <li>Leveraging deployment &amp; interaction data</li>
-              <li>Human correction data</li>
-              <li>Suboptimal and failure data</li>
-              <li>Data curation for iterative improvement</li>
-              <li>Role of pretraining in downstream improvement</li>
+              <li>Deployment, interaction, and failure data</li>
+              <li>Human feedback and correction data</li>
+              <li>Data curation and the role of pretraining</li>
             </ul>
           </article>
 
@@ -535,13 +591,9 @@
             <div class="topic-icon" style="background:#ede9fe; color:#6d28d9;" role="img" aria-label="Algorithms icon">⚙️</div>
             <h3 id="topic-algo">Algorithms for Improvement</h3>
             <ul>
-              <li>RL finetuning &amp; reward modeling</li>
-              <li>World modeling</li>
-              <li>Human-in-the-loop learning</li>
-              <li>Continual learning &amp; forgetting prevention</li>
-              <li>Exploration &amp; safety-aware improvement</li>
-              <li>Test-time adaptation</li>
-              <li>Improving and adapting VLA models</li>
+              <li>RL finetuning, reward modeling, and preference alignment</li>
+              <li>Continual learning and test-time adaptation</li>
+              <li>Improving and adapting foundation and VLA models</li>
             </ul>
           </article>
 
@@ -549,11 +601,9 @@
             <div class="topic-icon" style="background:#d1fae5; color:#065f46;" role="img" aria-label="Systems icon">🖥️</div>
             <h3 id="topic-sys">Systems for Real-World Iteration</h3>
             <ul>
-              <li>Software and hardware stacks</li>
-              <li>Interfaces for collecting robot experience</li>
-              <li>Human feedback collection</li>
-              <li>Fleet learning</li>
-              <li>Failure and damage management</li>
+              <li>Infrastructure for real-world policy iteration</li>
+              <li>Human feedback collection at scale</li>
+              <li>Fleet learning and multi-robot systems</li>
             </ul>
           </article>
 
@@ -561,12 +611,9 @@
             <div class="topic-icon" style="background:#fef3c7; color:#92400e;" role="img" aria-label="Evaluation icon">📊</div>
             <h3 id="topic-eval">Benchmarking &amp; Evaluation</h3>
             <ul>
-              <li>Metrics beyond success rate</li>
-              <li>Adaptation speed &amp; data efficiency</li>
-              <li>Robustness under distribution shift</li>
-              <li>Retaining old tasks</li>
-              <li>Safety during learning</li>
-              <li>Progress over extended deployment</li>
+              <li>Metrics for adaptation speed and robustness</li>
+              <li>Safety and forgetting during learning</li>
+              <li>Long-horizon evaluation in deployment</li>
             </ul>
           </article>
 
@@ -594,6 +641,13 @@
             <div class="speaker-body">
               <div class="name">To be announced</div>
               <div class="affil">Industry</div>
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-avatar" aria-hidden="true">👤</div>
+            <div class="speaker-body">
+              <div class="name">To be announced</div>
+              <div class="affil">Academia</div>
             </div>
           </div>
           <div class="speaker-card">
@@ -680,10 +734,136 @@
       <div class="section-inner">
         <p class="section-label" aria-hidden="true">Schedule</p>
         <h2 id="h-program">Program</h2>
-        <div class="coming-soon" role="status">
-          <span class="icon" aria-hidden="true">📅</span>
-          <h3>Coming Soon</h3>
-          <p>The workshop schedule will be posted here closer to the event.</p>
+        <!-- Morning -->
+        <div class="schedule-block">
+          <div class="schedule-block-title">Morning</div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">8:45 – 9:00 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-welcome">Welcome</span>
+              <div class="schedule-event-title">Opening Remarks</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">9:00 – 9:30 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 1</span>
+              <div class="schedule-event-desc">Industry</div>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">9:30 – 10:00 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 2</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">10:00 – 10:30 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 3</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">10:30 – 11:15 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-break">Break &amp; Posters</span>
+              <div class="schedule-event-title">Coffee Break + Poster Session</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">11:15 – 11:45 AM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 4</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">11:45 AM – 12:15 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-special">Poster Spotlights</span>
+              <div class="schedule-event-title">Spotlight Talks 1, 2, 3</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">12:15 – 1:15 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-break">Lunch</span>
+              <div class="schedule-event-title">Lunch Break</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Afternoon -->
+        <div class="schedule-block">
+          <div class="schedule-block-title">Afternoon</div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">1:15 – 1:45 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 5</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">1:45 – 2:15 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 6</span>
+              <div class="schedule-event-desc">Industry</div>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">2:15 – 2:45 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-talk">Invited Talk 7</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">2:45 – 3:30 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-break">Break &amp; Posters</span>
+              <div class="schedule-event-title">Coffee Break + Poster Session</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">3:30 – 4:00 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-special">Poster Spotlights</span>
+              <div class="schedule-event-title">Spotlight Talks 4, 5, 6</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">4:00 – 4:45 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-panel">Panel Discussion</span>
+              <div class="schedule-event-title">TBA</div>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="schedule-time">4:45 – 5:00 PM</div>
+            <div class="schedule-event">
+              <span class="schedule-tag tag-closing">Closing</span>
+              <div class="schedule-event-title">Closing Remarks &amp; Awards</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -696,42 +876,50 @@
         <div class="organizer-grid">
 
           <div class="organizer-card">
-            <div class="organizer-avatar" style="background:#e0e7ff; color:#4338ca;" aria-hidden="true">YW</div>
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://yilin-wu98.github.io/assets/img/yilinwu.jpg" alt=""></div>
             <div class="organizer-info">
-              <div class="name">Yilin Wu</div>
-              <div class="affil">TBD</div>
+              <div class="name"><a href="https://yilin-wu98.github.io/" target="_blank" rel="noopener">Yilin Wu</a></div>
+              <div class="affil">Ph.D. Student, CMU</div>
             </div>
           </div>
 
           <div class="organizer-card">
-            <div class="organizer-avatar" style="background:#ede9fe; color:#6d28d9;" aria-hidden="true">ZS</div>
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://zhanyisun.github.io/images/zhanyi.png" alt=""></div>
             <div class="organizer-info">
-              <div class="name">Zhanyi Sun</div>
-              <div class="affil">TBD</div>
+              <div class="name"><a href="https://zhanyisun.github.io/" target="_blank" rel="noopener">Zhanyi Sun</a></div>
+              <div class="affil">Ph.D. Student, Stanford</div>
             </div>
           </div>
 
           <div class="organizer-card">
-            <div class="organizer-avatar" style="background:#ccfbf1; color:#0f766e;" aria-hidden="true">NH</div>
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://avatars.githubusercontent.com/u/38315247?v=4" alt=""></div>
             <div class="organizer-info">
-              <div class="name">Nicklas Hansen</div>
-              <div class="affil">TBD</div>
+              <div class="name"><a href="https://www.nicklashansen.com/" target="_blank" rel="noopener">Nicklas Hansen</a></div>
+              <div class="affil">Ph.D. Candidate, UC San Diego</div>
             </div>
           </div>
 
           <div class="organizer-card">
-            <div class="organizer-avatar" style="background:#ffe4e6; color:#be123c;" aria-hidden="true">HL</div>
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://huihanl.github.io/profile_new.jpg" alt=""></div>
             <div class="organizer-info">
-              <div class="name">Huihan Liu</div>
-              <div class="affil">TBD</div>
+              <div class="name"><a href="https://huihanl.github.io/" target="_blank" rel="noopener">Huihan Liu</a></div>
+              <div class="affil">Ph.D. Student, UT Austin</div>
             </div>
           </div>
 
           <div class="organizer-card">
-            <div class="organizer-avatar" style="background:#fef3c7; color:#92400e;" aria-hidden="true">AW</div>
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://wagenmaker.github.io/andrew2.jpg" alt=""></div>
             <div class="organizer-info">
-              <div class="name">Andrew Wagenmaker</div>
-              <div class="affil">TBD</div>
+              <div class="name"><a href="https://wagenmaker.github.io/" target="_blank" rel="noopener">Andrew Wagenmaker</a></div>
+              <div class="affil">Postdoc, UC Berkeley</div>
+            </div>
+          </div>
+
+          <div class="organizer-card">
+            <div class="organizer-avatar" aria-hidden="true"><img src="https://www.cs.cmu.edu/~abajcsy/images/pic1.png" alt=""></div>
+            <div class="organizer-info">
+              <div class="name"><a href="https://www.cs.cmu.edu/~abajcsy/" target="_blank" rel="noopener">Andrea Bajcsy</a></div>
+              <div class="affil">Asst. Professor, CMU</div>
             </div>
           </div>
 
@@ -742,7 +930,7 @@
   </main>
 
   <footer role="contentinfo">
-    <div>CoRL 2025 Workshop on Continual Improvement of Robot Policies</div>
+    <div>CoRL 2025 Workshop on Towards Continually Improving Robot Systems</div>
     <div class="sub">Questions? Contact the organizers.</div>
   </footer>
 
