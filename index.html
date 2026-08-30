@@ -243,8 +243,15 @@
     /* ── Topic cards ── */
     .topic-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.25rem;
+    }
+
+    .topic-card p {
+      font-size: 0.82rem;
+      color: #475569;
+      line-height: 1.55;
+      margin: 0;
     }
 
     .topic-card {
@@ -579,42 +586,26 @@
 
           <article class="topic-card" aria-labelledby="topic-limits">
             <div class="topic-icon" style="background:#dbeafe; color:#1d4ed8;" role="img" aria-label="Adaptation icon">🎯</div>
-            <h3 id="topic-limits">Capabilities &amp; Limits of Adaptation</h3>
-            <ul>
-              <li>What SFT, RL, in-context learning, steering, and continual learning each extract from a pretrained policy</li>
-              <li>Recombining behaviors already in a model vs. learning genuinely new capabilities via parameter updates</li>
-              <li>How data, feedback, and interaction budgets set what is reachable from a given initialization</li>
-            </ul>
+            <h3 id="topic-limits">Capabilities and limits of adaptation</h3>
+            <p>What can different forms of adaptation extract from a pretrained policy? Supervised finetuning, reinforcement learning, in-context learning, test-time steering, and continual learning provide very different mechanisms for incorporating new information. When can adaptation efficiently recombine or unlock behaviors already in a pretrained model, and when does it require learning genuinely new capabilities with parameter updates? How do downstream data, feedback, and interaction budgets determine what is reachable from a given pretrained initialization?</p>
           </article>
 
           <article class="topic-card" aria-labelledby="topic-couple">
             <div class="topic-icon" style="background:#d1fae5; color:#065f46;" role="img" aria-label="Coupling icon">🔗</div>
-            <h3 id="topic-couple">Coupling Pretraining &amp; Adaptation</h3>
-            <ul>
-              <li>RL needs broad behavioral coverage and plasticity to keep improving</li>
-              <li>In-context learning needs the model to treat new task data as a prompt</li>
-              <li>Steering needs distinct behavioral modes that conditioning can select &mdash; how should the recipe depend on the method, and vice versa?</li>
-            </ul>
+            <h3 id="topic-couple">Coupling pretraining and adaptation</h3>
+            <p>Different adaptation methods ask different things of a pretrained model: reinforcement learning needs broad behavioral coverage and the plasticity to keep improving; in-context learning needs the model to treat new task data as a prompt; steering requires that the pretrained model already contains distinct behavioral modes that can be selected through conditioning. How should the pretraining recipe depend on the adaptation method it will be paired with, and vice versa?</p>
           </article>
 
           <article class="topic-card" aria-labelledby="topic-eval">
             <div class="topic-icon" style="background:#fef3c7; color:#92400e;" role="img" aria-label="Evaluation icon">📊</div>
-            <h3 id="topic-eval">Measuring Readiness to Adapt</h3>
-            <ul>
-              <li>Why validation loss measures fit, not adaptability</li>
-              <li>Readiness as a property of learning dynamics: how cheaply a model is steered toward new behaviors</li>
-              <li>Offline metrics and lightweight probes that predict downstream adaptation success</li>
-            </ul>
+            <h3 id="topic-eval">Measuring readiness to adapt</h3>
+            <p>Pretraining is usually judged by validation loss, but loss measures how well a model fits its data, not how well it adapts. Readiness for adaptation is instead a property of a model's learning dynamics: how cheaply it can be steered toward new behaviors. Can it be predicted from offline metrics alone, or estimated efficiently by probing adaptation on a small set of held-out tasks? Can two policies with similar zero-shot performance nevertheless have fundamentally different adaptation potential?</p>
           </article>
 
           <article class="topic-card" aria-labelledby="topic-pretrain">
             <div class="topic-icon" style="background:#ede9fe; color:#6d28d9;" role="img" aria-label="Pretraining icon">🗄️</div>
-            <h3 id="topic-pretrain">Pretraining for Adaptation</h3>
-            <ul>
-              <li>Beyond behavior cloning on expert demos: play, suboptimal and failure trajectories, autonomous experience</li>
-              <li>Training policies to infer and exploit new task information from context</li>
-              <li>Which objectives, data mixtures, and curricula best support efficient downstream adaptation</li>
-            </ul>
+            <h3 id="topic-pretrain">Pretraining for adaptation</h3>
+            <p>If a pretrained policy will ultimately be adapted to new settings, how should pretraining prepare it for that process? Beyond standard behavior cloning on expert demonstrations, alternative objectives and heterogeneous data&mdash;such as play, suboptimal and failure trajectories, or autonomous experience&mdash;may shape the behavioral coverage, steerability, and plasticity available at adaptation time. Should pretrained policies be explicitly trained to infer and exploit new task information from context? Which pretraining objectives, data mixtures, and training curricula best support efficient downstream adaptation?</p>
           </article>
 
         </div>
