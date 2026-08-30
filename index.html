@@ -563,9 +563,9 @@
         <p class="section-label" aria-hidden="true">About</p>
         <h2 id="h-overview">Overview</h2>
         <div class="overview-body">
-          <p>The strongest robotic manipulation systems today are typically built in two stages: first, pretrain a generalist policy on a large and diverse dataset, then adapt it to the specific setting where we actually want to deploy it. Adaptation can take many forms &mdash; supervised and RL finetuning, in-context learning and test-time steering, and targeting not just specific tasks but also new embodiments and environments &mdash; and is often critical for achieving effective performance in the deployment domain of interest.</p>
-          <p>These two stages optimize for different objectives, however: pretraining targets broad competence across many tasks, while adaptation targets the specific deployment setting of interest. The most capable pretrained model is <em>not</em> necessarily the easiest to adapt, and we have no reliable way to tell, before adaptation, whether one pretrained policy is a better starting point for adaptation than another.</p>
-          <p>This workshop seeks to bridge these two stages and ask <strong>what makes a pretrained policy a good foundation for adaptation?</strong> Our goal is to bring together researchers working on pretraining generalist policies with those developing approaches for adaptation, to discuss how pretraining and adaptation should be designed together.</p>
+          <p>The strongest robotic manipulation systems today are typically built in two stages: first, pretrain a generalist policy on a large and diverse dataset, then adapt it to the specific setting where we actually want to deploy it. Adaptation can take many forms &mdash; supervised or RL fine-tuning, in-context learning, or test-time steering &mdash; and can adapt models not only to new tasks, but also to new embodiments and environments. Such adaptation is often critical for achieving effective performance in the target deployment domain.</p>
+          <p>These two stages optimize for different objectives, however: pretraining targets broad competence across many tasks, while adaptation targets the specific deployment setting of interest. Pretraining does not directly optimize for how readily a policy can be adapted &mdash; the final objective we often care about. The community has devoted significant effort to expanding pretrained capabilities by scaling the number of embodiments, tasks, compute, and data diversity considered in pretraining, on the assumption that a stronger pretrained generalist makes a better starting point for adaptation. But the most capable pretrained model is <em>not</em> necessarily the easiest to adapt, and we have no reliable way to tell, before adaptation, whether one pretrained policy is a better starting point than another. Meanwhile, approaches for adapting generalist policies to downstream settings typically assume the generalist policy is fixed, and do not consider how adaptation performance might be limited or enabled by the choice of pretrained policy.</p>
+          <p>This workshop seeks to bridge these two stages and ask <strong>what makes a pretrained policy a good foundation for adaptation?</strong> Our goal is to bring together researchers working on pretraining generalist policies with those developing approaches for adaptation, and to inspire discussion on how the two should be designed together: what properties of a pretrained robot policy make it an effective starting point for downstream adaptation, and how adaptation objectives should shape the way we evaluate and build pretrained models.</p>
         </div>
       </div>
     </section>
@@ -577,33 +577,23 @@
         <h2 id="h-topics">Core Research Questions</h2>
         <div class="topic-grid">
 
-          <article class="topic-card" aria-labelledby="topic-data">
-            <div class="topic-icon" style="background:#dbeafe; color:#1d4ed8;" role="img" aria-label="Objectives icon">🎯</div>
-            <h3 id="topic-data">Pretraining Objectives</h3>
+          <article class="topic-card" aria-labelledby="topic-limits">
+            <div class="topic-icon" style="background:#dbeafe; color:#1d4ed8;" role="img" aria-label="Adaptation icon">🎯</div>
+            <h3 id="topic-limits">Capabilities &amp; Limits of Adaptation</h3>
             <ul>
-              <li>Behavior cloning vs. return-conditioned, world-model, and value-based objectives</li>
-              <li>Few-shot and in-context pretraining objectives</li>
-              <li>Steerability vs. plasticity, and how to improve both</li>
+              <li>What SFT, RL, in-context learning, steering, and continual learning each extract from a pretrained policy</li>
+              <li>Recombining behaviors already in a model vs. learning genuinely new capabilities via parameter updates</li>
+              <li>How data, feedback, and interaction budgets set what is reachable from a given initialization</li>
             </ul>
           </article>
 
-          <article class="topic-card" aria-labelledby="topic-algo">
-            <div class="topic-icon" style="background:#ede9fe; color:#6d28d9;" role="img" aria-label="Data icon">🗄️</div>
-            <h3 id="topic-algo">Pretraining Data for Adaptability</h3>
-            <ul>
-              <li>Demonstrations, play data, failures, and RL rollouts</li>
-              <li>What data properties drive zero-shot vs. adaptable performance</li>
-              <li>Data diversity across objects, scenes, skills, and embodiments</li>
-            </ul>
-          </article>
-
-          <article class="topic-card" aria-labelledby="topic-sys">
+          <article class="topic-card" aria-labelledby="topic-couple">
             <div class="topic-icon" style="background:#d1fae5; color:#065f46;" role="img" aria-label="Coupling icon">🔗</div>
-            <h3 id="topic-sys">Coupling Pretraining &amp; Adaptation</h3>
+            <h3 id="topic-couple">Coupling Pretraining &amp; Adaptation</h3>
             <ul>
-              <li>RL finetuning, in-context learning, and test-time steering</li>
-              <li>How pretraining recipes should depend on the adaptation method</li>
-              <li>Adapting to new tasks, embodiments, and environments</li>
+              <li>RL needs broad behavioral coverage and plasticity to keep improving</li>
+              <li>In-context learning needs the model to treat new task data as a prompt</li>
+              <li>Steering needs distinct behavioral modes that conditioning can select &mdash; how should the recipe depend on the method, and vice versa?</li>
             </ul>
           </article>
 
@@ -611,9 +601,19 @@
             <div class="topic-icon" style="background:#fef3c7; color:#92400e;" role="img" aria-label="Evaluation icon">📊</div>
             <h3 id="topic-eval">Measuring Readiness to Adapt</h3>
             <ul>
-              <li>Beyond train/validation loss as a predictor of adaptability</li>
-              <li>How cheaply a model can be steered toward new behaviors</li>
-              <li>Offline metrics that predict downstream adaptation success</li>
+              <li>Why validation loss measures fit, not adaptability</li>
+              <li>Readiness as a property of learning dynamics: how cheaply a model is steered toward new behaviors</li>
+              <li>Offline metrics and lightweight probes that predict downstream adaptation success</li>
+            </ul>
+          </article>
+
+          <article class="topic-card" aria-labelledby="topic-pretrain">
+            <div class="topic-icon" style="background:#ede9fe; color:#6d28d9;" role="img" aria-label="Pretraining icon">🗄️</div>
+            <h3 id="topic-pretrain">Pretraining for Adaptation</h3>
+            <ul>
+              <li>Beyond behavior cloning on expert demos: play, suboptimal and failure trajectories, autonomous experience</li>
+              <li>Training policies to infer and exploit new task information from context</li>
+              <li>Which objectives, data mixtures, and curricula best support efficient downstream adaptation</li>
             </ul>
           </article>
 
