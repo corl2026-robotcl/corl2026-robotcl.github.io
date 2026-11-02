@@ -527,63 +527,6 @@
     .speaker-body .affil { font-size: 0.74rem; color: #64748b; margin-top: 0.15rem; }
     .speaker-body .note { font-size: 0.68rem; color: #6366f1; margin-top: 0.3rem; font-style: italic; }
 
-    /* ── Call for Papers ── */
-    .cfp-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .cfp-topics ul { list-style: none; padding: 0; margin-top: 0.75rem; }
-    .cfp-topics ul li {
-      font-size: 0.875rem;
-      color: #334155;
-      padding: 0.5rem 0 0.5rem 1.3rem;
-      border-bottom: 1px solid #e2e8f0;
-      position: relative;
-      line-height: 1.5;
-    }
-    .cfp-topics ul li:last-child { border-bottom: none; }
-    .cfp-topics ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-size: 0.75rem;
-      top: 0.6rem;
-    }
-
-    .dates-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      margin-top: 0.75rem;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(15,23,42,0.04);
-      background: var(--bg);
-    }
-    .dates-table th {
-      background: #eef2ff;
-      color: #3730a3;
-      text-align: left;
-      padding: 0.6rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .dates-table td {
-      padding: 0.7rem 1rem;
-      font-size: 0.875rem;
-      border-bottom: 1px solid #e2e8f0;
-      color: #334155;
-    }
-    .dates-table tr:last-child td { border-bottom: none; }
-    .dates-table .tbd { color: #94a3b8; font-style: italic; }
-
     /* ── Schedule ── */
     .schedule-block { margin-bottom: 2.5rem; }
     .schedule-block:last-child { margin-bottom: 0; }
@@ -718,7 +661,6 @@
       .nav-links a { padding: 0.8rem 0.6rem; font-size: 0.8rem; }
       section { padding: 3rem 1.25rem; }
       h2 { font-size: 1.4rem; }
-      .cfp-grid { grid-template-columns: 1fr; gap: 2rem; }
       .organizer-card { max-width: 100%; }
       .activity-flow { grid-template-columns: 1fr; gap: 2rem; }
     }
@@ -743,9 +685,8 @@
           <li><a href="#overview">Overview</a></li>
           <li><a href="#topics">Research Questions</a></li>
           <li><a href="#speakers">Speakers</a></li>
-          <li><a href="#call">Call for Papers</a></li>
+          <li><a href="#papers">Accepted Papers</a></li>
           <li><a href="#program">Program</a></li>
-          <li><a href="papers/">Accepted Papers</a></li>
           <li><a href="#activities">Activities</a></li>
           <li><a href="#organizers">Organizers</a></li>
         </ul>
@@ -774,8 +715,8 @@
         <span class="badge">CoRL 2026</span>
       </div>
       <div class="hero-cta">
-        <a class="btn-hero" href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/pretrain-to-adapt" target="_blank" rel="noopener">
-          Submit via OpenReview
+        <a class="btn-hero" href="#papers">
+          See accepted papers
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -915,52 +856,21 @@
     </section>
 
     <!-- ── Call for Papers ── -->
-    <section id="call" class="bg-alt" aria-labelledby="h-call">
+    <section id="papers" class="bg-alt" aria-labelledby="h-papers">
       <div class="section-inner">
-        <p class="section-label" aria-hidden="true">Submissions</p>
-        <h2 id="h-call">Call for Papers</h2>
-        <div class="cfp-grid">
-
-          <div class="cfp-topics">
-            <h3>Topics</h3>
-            <p style="font-size:0.87rem; margin-bottom:0.25rem;">We welcome submissions on, but not limited to:</p>
-            <ul>
-              <li>Pretraining objectives for adaptable policies (behavior cloning, return-conditioned, world-model, value-based, in-context objectives)</li>
-              <li>Composing and curating heterogeneous pretraining data (demonstrations, play data, suboptimal/failure trajectories, RL rollouts) for downstream adaptability</li>
-              <li>Coupling pretraining recipes with adaptation methods: RL finetuning, in-context learning, and test-time steering</li>
-              <li>Adapting pretrained policies to new tasks, embodiments, and environments</li>
-              <li>Adapting pretrained policies to new sensor modalities (e.g. tactile, depth, audio, wrist and multi-view cameras)</li>
-              <li>Metrics and benchmarks for measuring readiness to adapt, including steerability and plasticity of pretrained policies</li>
-              <li>Position papers, work-in-progress, and retrospectives on any of the above</li>
-            </ul>
-            <p style="margin-top:1.4rem;">
-              <a class="btn-primary" href="https://openreview.net/group?id=robot-learning.org/CoRL/2026/Workshop/pretrain-to-adapt" target="_blank" rel="noopener">
-                Submit via OpenReview
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-              </a>
-            </p>
-            <p style="font-size:0.87rem; margin-top:1rem;"><a href="papers/" style="color:var(--primary); font-weight:600; text-decoration:none;">See the accepted papers &rarr;</a></p>
-          </div>
-
-          <div>
-            <h3>Important Dates</h3>
-            <p style="font-size:0.87rem; margin-bottom:0.25rem;">The submission deadline is 11:59&nbsp;PM Anywhere on Earth (AoE).</p>
-            <table class="dates-table" aria-label="Important submission dates">
-              <thead>
-                <tr>
-                  <th scope="col">Milestone</th>
-                  <th scope="col">Date</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Submissions Open</td><td>August 29, 2026, 12:00 AM</td></tr>
-                <tr><td>Submission Deadline</td><td>October 4, 2026, 11:59 PM AoE</td></tr>
-                <tr><td>Acceptance Notification</td><td>October 19, 2026</td></tr>
-                <tr><td>Workshop Day</td><td>November 12, 2026</td></tr>
-              </tbody>
-            </table>
-          </div>
-
+        <p class="section-label" aria-hidden="true">Contributions</p>
+        <h2 id="h-papers">Accepted Papers</h2>
+        <div class="overview-body">
+          <p>Twenty-nine papers were accepted to the workshop: <strong>five as orals</strong> and <strong>twenty-four as posters</strong>. Together they cut across the questions the workshop set out to ask.</p>
+          <p>Several take up <em>what pretraining actually buys us</em> &mdash; whether validation loss predicts downstream adaptability, what twenty thousand hours of open-source robot data have to teach us, and which regularizers and priors leave a checkpoint easier to finetune. Others attack <em>adaptation itself</em>: reinforcement learning post-training from suboptimal or purely offline experience, test-time steering and routing for vision-language-action models, and world models adapted for planning rather than prediction alone. A third thread asks <em>what a policy must retain</em> as it adapts &mdash; memory, plasticity, and continual learning from pixels and from force. Running through all of them is the question of new sensing and new embodiments: tactile residual adaptation, multisensory finetuning, and shared behavior spaces across humanoids.</p>
+          <p>The five orals are given as short talks from 2:55&ndash;3:30 PM. <strong>All twenty-nine papers</strong>, orals included, are presented at the poster session from 3:30&ndash;4:15 PM.</p>
+          <p style="margin-top:1.6rem;">
+            <a class="btn-primary" href="papers/">
+              See all accepted papers
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </a>
+          </p>
+          <p style="font-size:0.87rem; margin-top:0.9rem; color:var(--text-muted);">Titles, authors, affiliations and poster board assignments.</p>
         </div>
       </div>
     </section>
