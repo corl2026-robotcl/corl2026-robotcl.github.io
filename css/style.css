@@ -441,6 +441,25 @@ footer {
 }
 
 /* ── Accepted-papers board assignments ── */
+.paper-table td .paper-name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.paper-table td .paper-authors {
+  margin-top: 0.25rem;
+  font-size: 0.86rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.paper-table td .paper-affil {
+  margin-top: 0.15rem;
+  font-size: 0.8rem;
+  color: #7c8798;
+  line-height: 1.45;
+}
+
 .paper-table td.idx {
   width: 2.5rem;
   color: #6b7280;
