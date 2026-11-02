@@ -440,6 +440,24 @@ footer {
   border-image: linear-gradient(90deg, #6366f1, #38bdf8) 1;
 }
 
+/* ── Accepted-papers board assignments ── */
+.paper-table td.idx {
+  width: 2.5rem;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-table td.board {
+  width: 4.5rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.paper-table th:nth-child(3),
+.paper-table th:nth-child(4) {
+  text-align: center;
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   .site-title h1 {
@@ -454,5 +472,19 @@ footer {
   }
   .data-table .time {
     width: auto;
+  }
+  .paper-table td.idx {
+    width: 1.9rem;
+    padding-left: 0.6rem;
+    padding-right: 0.3rem;
+  }
+  .paper-table td.board {
+    width: 2.6rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+  }
+  .paper-table td,
+  .paper-table th {
+    font-size: 0.85rem;
   }
 }
