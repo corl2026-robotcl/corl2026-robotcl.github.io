@@ -695,6 +695,18 @@
       .rq-card { padding: 1.3rem 1.2rem 1.3rem 1.35rem; }
       .rq-num { font-size: 2.6rem; }
     }
+
+    .sponsor-row { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .sponsor-card {
+      display: inline-flex; flex-direction: column; gap: 0.25rem;
+      background: var(--bg); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.25rem 1.75rem; text-decoration: none; color: var(--text);
+      box-shadow: 0 1px 2px rgba(15,23,42,0.04);
+      transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+    .sponsor-card:hover { border-color: #a5b4fc; box-shadow: 0 6px 18px rgba(67,56,202,0.10); transform: translateY(-2px); }
+    .sponsor-card .sponsor-name { font-family: 'Fraunces', Georgia, serif; font-size: 1.25rem; font-weight: 600; }
+    .sponsor-card .sponsor-sub { font-size: 0.85rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -715,6 +727,7 @@
           <li><a href="#program">Program</a></li>
           <li><a href="#activities">Activities</a></li>
           <li><a href="#organizers">Organizers</a></li>
+          <li><a href="#sponsors">Sponsors</a></li>
         </ul>
       </nav>
     </div>
@@ -1101,6 +1114,20 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <section id="sponsors" class="bg-alt" aria-labelledby="h-sponsors">
+      <div class="section-inner">
+        <p class="section-label" aria-hidden="true">Support</p>
+        <h2 id="h-sponsors">Sponsors</h2>
+        <p style="color: var(--text-muted); margin-bottom: 1.25rem;">We thank our sponsor for supporting this workshop.</p>
+        <div class="sponsor-row">
+          <a class="sponsor-card" href="https://www.tri.global/" target="_blank" rel="noopener">
+            <span class="sponsor-name">Toyota Research Institute</span>
+            <span class="sponsor-sub">TRI</span>
+          </a>
         </div>
       </div>
     </section>
