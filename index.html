@@ -730,6 +730,11 @@
       font-size: 0.95rem; line-height: 1.6;
     }
     .poster-callout strong { color: var(--primary-dark); }
+    .sponsor-card .sponsor-logo {
+      display: flex; align-items: center; justify-content: center;
+      background: #000; border-radius: 10px; padding: 0.9rem 1.4rem; margin-bottom: 0.5rem;
+    }
+    .sponsor-card .sponsor-logo img { display: block; width: 240px; max-width: 100%; height: auto; }
   </style>
 </head>
 <body>
@@ -1161,8 +1166,8 @@
         <p style="color: var(--text-muted); margin-bottom: 1.25rem;">We thank our sponsor for supporting this workshop.</p>
         <div class="sponsor-row">
           <a class="sponsor-card" href="https://www.tri.global/" target="_blank" rel="noopener">
+            <span class="sponsor-logo"><img src="images/tri-logo.png" alt="Toyota Research Institute logo" width="240" height="78"></span>
             <span class="sponsor-name">Toyota Research Institute</span>
-            <span class="sponsor-sub">TRI</span>
           </a>
         </div>
       </div>
